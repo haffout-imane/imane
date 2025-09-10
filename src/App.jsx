@@ -9,7 +9,6 @@ import Contact from "./sections/Contact";
 const App = () => {
   return (
     <div 
-	className="container"
 	style={{
         background:
           "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.25) 60%)",

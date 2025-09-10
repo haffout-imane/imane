@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Project from "../components/Project";
 import { myProjects } from "../constants";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useRef } from "react";
 import web from "/assets/icons/web.png";
 import mobile from "/assets/icons/mobile.png";
@@ -29,10 +29,10 @@ const services = [
 
 const ServiceCard = ({ index, title, icon }) => {
   const descriptions = {
-    "Web Developer": "I build creative and user-friendly web apps using JavaScript, React, HTML, and CSS.",
-    "Mobile Developer": "Currently diving into React Native, crafting simple and useful mobile apps.",
+    "Web Developer": "Crafting sleek, user-friendly web apps with JavaScript, React, HTML, and CSS.",
+    "Mobile Developer": "Currently diving into Flutter/Dart, crafting simple and useful mobile apps.",
     "Backend Developer": "Strong foundation in C, C++, Express, and PostgreSQL for reliable backends.",
-    "Creator": "I use AI and figma to turn my ideas to reality"
+    "Creator": "Turning ideas into real projects with Figma, Illustrator, and code."
   };
 
   return (

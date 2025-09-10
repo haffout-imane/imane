@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 const getRandomFloat = (min, max) => Math.random() * (max - min) + min;

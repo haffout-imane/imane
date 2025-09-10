@@ -1,51 +1,85 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { certifications } from "../constants";
 import { useState } from "react";
 import { Particles } from "../components/Particles";
 
 const CertCard = ({ cert, index, onOpen }) => (
-  <motion.article
-    layout
-    initial={{ opacity: 0, y: 8 }}
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.45, delay: index * 0.06 }}
-    className="relative bg-[rgba(15,23,42,0.6)] backdrop-blur-sm rounded-2xl p-6 border border-white/5 hover:shadow-lg hover:shadow-blue-500/10 transition-transform transform hover:-translate-y-2"
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    className="relative group"
   >
-    <div className="absolute -left-4 -top-4 w-28 h-28 rounded-full bg-gradient-to-tr from-blue-500/5 to-purple-500/5 blur-2xl opacity-80 pointer-events-none" />
+    <div className="absolute inset-x-0 top-0 h-full -z-10">
+      <div className="absolute inset-x-0 -top-40 w-full aspect-square bg-gradient-radial from-blue-500/10 via-blue-500/5 to-transparent rounded-full blur-2xl transform group-hover:translate-y-10 transition-transform duration-700" />
+    </div>
 
-    <div className="flex items-start justify-between">
-      <div className="pr-4">
+    <motion.div
+      className="relative bg-[rgba(15,23,42,0.6)] backdrop-blur-sm rounded-xl p-6 flex flex-col h-full group-hover:bg-[rgba(15,23,42,0.7)] transition-colors duration-500 border border-white/5"
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <div className="relative flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-400 text-black font-bold">
-            {index + 1}
+          <div className="relative flex items-center justify-center w-12 h-12">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-xl blur"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                rotate: [0, 90, 0]
+              }}
+              transition={{ 
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            />
+            <span className="relative z-10 text-lg font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+              {index + 1}
+            </span>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-white">{cert.title}</h3>
-            <p className="text-sm text-gray-400 mt-0.5">{cert.issuer}</p>
+            <h3 className="text-base font-bold mb-1 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-blue-200 transition-all duration-300">
+              {cert.title}
+            </h3>
+            <p className="text-sm text-gray-400/90 transition-colors duration-300 group-hover:text-gray-300/90">
+              {cert.issuer}
+            </p>
+            <p className="text-xs text-gray-500 mt-1">{cert.date}</p>
           </div>
         </div>
-        <p className="text-xs text-gray-500 mt-3">{cert.date}</p>
-      </div>
 
-      <div className="flex-shrink-0">
-        <button
+        <motion.button
           onClick={() => onOpen(cert)}
-          className="px-3 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-black font-medium hover:scale-105 transition-transform"
+          className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-sm backdrop-blur-sm group-hover:bg-blue-500/20 group-hover:text-blue-300 transition-all duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           Show
-        </button>
+        </motion.button>
       </div>
-    </div>
 
-    <div className="mt-5">
-      <h4 className="text-xs text-gray-300 font-semibold mb-2">Skills & Technologies</h4>
-      <div className="flex flex-wrap gap-2">
-        {cert.skills.map((s, i) => (
-          <span key={i} className="text-xs px-3 py-1 rounded-full bg-white/5 text-gray-300">{s}</span>
-        ))}
+      <div className="relative mt-auto">
+        <h4 className="text-xs font-medium text-gray-400 mb-2 group-hover:text-gray-300 transition-colors duration-300">
+          Skills & Technologies
+        </h4>
+        <div className="flex flex-wrap gap-2">
+          {cert.skills.map((s, i) => (
+            <span 
+              key={i} 
+              className="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
-  </motion.article>
+
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+    </motion.div>
+  </motion.div>
 );
 
 const Modal = ({ cert, onClose }) => {
@@ -56,38 +90,86 @@ const Modal = ({ cert, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60"
       >
         <motion.div
-          initial={{ scale: 0.98, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.98, opacity: 0 }}
-          className="max-w-4xl w-full bg-[rgba(8,10,14,0.9)] rounded-2xl p-6 border border-white/6 shadow-2xl"
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 20, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+          className="relative w-full max-w-2xl overflow-hidden bg-[rgba(15,23,42,0.95)] backdrop-blur-md rounded-2xl border border-white/10"
         >
-          <div className="flex items-start justify-between">
-            <div>
-              <h3 className="text-2xl font-bold text-white">{cert.title}</h3>
-              <p className="text-sm text-gray-300">{cert.issuer} • {cert.date}</p>
-            </div>
-            <button onClick={onClose} className="text-gray-400 hover:text-white">✕</button>
-          </div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent)]" />
+          
+          <motion.button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm z-10 group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="w-5 h-5 text-white/70 group-hover:text-white/90 transition-colors" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </motion.button>
 
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-black/40 rounded-lg p-4 flex items-center justify-center border border-white/5">
-              <img src={cert.image} alt={cert.title} className="max-h-96 object-contain rounded-md" />
-            </div>
+          <div className="relative p-6">
+            <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+              {cert.title}
+            </h3>
+            <p className="text-gray-400">{cert.issuer} • {cert.date}</p>
 
-            <div>
-              <h4 className="text-lg text-white font-semibold mb-3">Skills & Technologies</h4>
-              <div className="grid grid-cols-1 gap-2">
-                {cert.skills.map((s, i) => (
-                  <div key={i} className="text-sm text-gray-300">• {s}</div>
-                ))}
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-[rgba(15,23,42,0.6)] backdrop-blur-sm rounded-xl p-4 flex items-center justify-center border border-white/5">
+                <img 
+                  src={cert.image} 
+                  alt={cert.title} 
+                  className="max-h-80 object-contain rounded-lg" 
+                />
               </div>
 
-              <div className="mt-6 flex gap-3">
-                <a href={cert.url} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-black font-medium">Verify</a>
-                <button onClick={onClose} className="px-4 py-2 rounded-lg border border-white/6 text-gray-300">Close</button>
+              <div className="flex flex-col justify-between">
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                    Skills & Technologies
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {cert.skills.map((s, i) => (
+                      <span 
+                        key={i} 
+                        className="text-sm px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-gray-300"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-3 mt-6">
+                  <motion.a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-2 rounded-full bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors border border-white/10"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Verify
+                  </motion.a>
+                  <motion.button
+                    onClick={onClose}
+                    className="px-4 py-2 rounded-full bg-white/5 text-gray-300 hover:bg-white/10 transition-colors border border-white/10"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Close
+                  </motion.button>
+                </div>
               </div>
             </div>
           </div>

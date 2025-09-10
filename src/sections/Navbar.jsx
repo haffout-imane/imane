@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 function Navigation() {
   return (
     <ul className="nav-ul">
@@ -45,13 +45,9 @@ const Navbar = () => {
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none sm:hidden"
+            className="flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none sm:hidden text-2xl"
           >
-            <img
-              src={isOpen ? "assets/close.svg" : "assets/menu.svg"}
-              className="w-6 h-6"
-              alt="toggle"
-            />
+            {isOpen ? "✕" : "☰"}
           </button>
           <nav className="hidden sm:flex">
             <Navigation />
