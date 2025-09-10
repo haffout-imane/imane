@@ -1,7 +1,7 @@
 export const myProjects = [
   {
     id: 1,
-    title: "Maze Runners (cub3d)",
+    title: "Maze Runners",
     description:
       "A 3D maze exploration game inspired by Wolfenstein 3D, built using raycasting in C.",
     subDescription: [
@@ -43,7 +43,7 @@ export const myProjects = [
   },
   {
     id: 3,
-    title: "Space Pong (ft_transcendence)",
+    title: "Space Pong",
     description:
       "A full-stack multiplayer web game inspired by Pong, enhanced with modern features.",
     subDescription: [
