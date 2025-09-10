@@ -14,13 +14,13 @@ function Navigation() {
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#certifications">
-          Certifications
+        <a className="nav-link" href="#projects">
+          Projects
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#projects">
-          Projects
+        <a className="nav-link" href="#certifications">
+          Certifications
         </a>
       </li>
       <li className="nav-li">

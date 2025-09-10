@@ -106,31 +106,13 @@ export const myProjects = [
   },
 ];
 
-export const mySocials = [
-  {
-    name: "WhatsApp",
-    href: "",
-    icon: "/assets/socials/whatsApp.svg",
-  },
-  {
-    name: "Linkedin",
-    href: "https://www.linkedin.com/in/ali-sanati/",
-    icon: "/assets/socials/linkedIn.svg",
-  },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/ali.sanatidev/reels/",
-    icon: "/assets/socials/instagram.svg",
-  },
-];
-
 export const certifications = [
   {
     title: "Front End Development Libraries",
     issuer: "freeCodeCamp",
-    date: "2023",
+    date: "Aug 2025",
     image: "/assets/certifications/front-end-development-libraries.png",
-    url: "https://www.freecodecamp.org/certification/",
+    url: "https://www.freecodecamp.org/certification/imane-haffout/front-end-development-libraries",
     skills: [
       "React",
       "Redux",
@@ -142,9 +124,9 @@ export const certifications = [
   {
     title: "Back End Development and APIs",
     issuer: "freeCodeCamp",
-    date: "2023",
+    date: "Aug 2025",
     image: "/assets/certifications/back-end-development-and-apis.png",
-    url: "https://www.freecodecamp.org/certification/",
+    url: "https://www.freecodecamp.org/certification/imane-haffout/back-end-development-and-apis",
     skills: [
       "Node.js",
       "Express",
@@ -154,11 +136,11 @@ export const certifications = [
     ]
   },
   {
-    title: "PostgreSQL",
-    issuer: "freeCodeCamp",
-    date: "2023",
+    title: "PostgreSQL: Become an SQL developer",
+    issuer: "Simplilearn",
+    date: "Aug 2025",
     image: "/assets/certifications/PostgreSQL.png",
-    url: "https://www.freecodecamp.org/certification/",
+    url: "https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiIzMjA1IiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvODg4NDE2Ml85MjczMDI0MTc1NjU2NjY3NzY0Ny5wbmciLCJ1c2VybmFtZSI6IkltYW5lIEhhZmZvdXQifQ%3D%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F5991%2FPostgreSQL-%3A-Become-an-SQL-developer-%2Fcertificate%2Fdownload-skillup&%24web_only=true&_branch_match_id=1434118711069283002&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1k%2FVz8lwDHQqKzNIC0%2ByrytKTUstKsrMS49PKsovL04tsvUBqkpN8cwDANzHLP5BAAAA",
     skills: [
       "SQL",
       "Database Design",
@@ -170,9 +152,9 @@ export const certifications = [
   {
     title: "Responsive Web Design",
     issuer: "freeCodeCamp",
-    date: "2023",
+    date: "Jun 2025",
     image: "/assets/certifications/responsive-web-design.png",
-    url: "https://www.freecodecamp.org/certification/",
+    url: "https://www.freecodecamp.org/certification/imane-haffout/responsive-web-design",
     skills: [
       "HTML5",
       "CSS3",
