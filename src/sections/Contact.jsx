@@ -178,7 +178,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              About Me
+              Get In Touch
             </motion.h2>
             <motion.div 
               className="h-1 w-20 bg-blue-500 mx-auto"
